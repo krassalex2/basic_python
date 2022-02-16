@@ -43,7 +43,7 @@ while True:
 print('Исходная структура данных')
 pprint(products)
 
-properties_list = ['Название', 'Стоимость', 'Кол-во', "Ед."]
+properties_list = ['Название', 'Стоимость', 'Кол-во', 'Ед.']
 properties_dict = dict()
 for prop in properties_list:
     values_list = []
