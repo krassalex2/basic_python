@@ -11,7 +11,7 @@ def sum_numbers_to_asteriks(input_str):
     """
     Суммирует строку чисел вида 'a b c...' до знака *
     :param input_str: Входная строка вида 'a b c...'
-    :return: Возвращает сумму чисел до звездочки
+    :return: Возвращает сумму чисел до знака *
     """
     nums = input_str.split()
     result = 0

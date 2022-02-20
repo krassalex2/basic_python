@@ -16,8 +16,9 @@ def power(positive_number, negative_number):
     if negative_number >= 0:
         raise ValueError('negative_number должно быть отрицательным')
     result = 1
+    inverse = 1 / positive_number
     for index in range(abs(negative_number)):
-        result *= 1 / positive_number
+        result *= inverse
     return result
 
 

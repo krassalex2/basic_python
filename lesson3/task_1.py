@@ -13,9 +13,9 @@ def division(dividend, divider):
 
 
 try:
-    a = int(input('Введите делимое: '))
-    b = int(input('Введите делитель: '))
-    print('Результат деления:', division(a, b))
+    a = float(input('Введите делимое: '))
+    b = float(input('Введите делитель: '))
+    print('Частное:', division(a, b))
 except ValueError:
     print('Введено не число!')
 except ZeroDivisionError:

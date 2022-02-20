@@ -5,6 +5,7 @@
 # Нужно сделать вывод исходной строки, но каждое слово должно начинаться с заглавной буквы.
 # Используйте написанную ранее функцию int_func()
 
+
 def int_func(word):
     """
     Принимает строку и преобразует первую букву в заглавную
@@ -13,7 +14,7 @@ def int_func(word):
     """
     result = []
     for index, w in enumerate(word):
-        w = chr(ord(w) - 32) if index == 0 and not is_title_func(w) else w
+        w = chr(ord(w) - 32) if index == 0 and is_small_func(w) else w
         result.append(w)
     return "".join(result)
 
@@ -31,14 +32,14 @@ def words_func(words):
     return " ".join(result)
 
 
-def is_title_func(char):
+def is_small_func(char):
     """
-    Проверяет, является ли уже буква заглавной
+    Проверяет, является ли уже буква не заглавной
     :param char: Проверяемый символ
-    :return: Возвращает True, если буква заглавная
+    :return: Возвращает True, если буква не заглавная
     """
-    rus = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬБЮ'
-    eng = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    rus = 'йцукенгшщзхъфывапролджэячсмитьбю'
+    eng = 'qwertyuiopasdfghjklzxcvbnm'
     return True if char in rus or char in eng else False
 
 

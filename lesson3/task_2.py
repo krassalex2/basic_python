@@ -13,9 +13,10 @@ def get_user_info(name, surname, year_of_birthday, city, email, phone):
     :param city: Город проживания
     :param email: Адрес электронной почты
     :param phone: Телефон
+    :return: Возвращает строку с информацией о пользователе
     """
     return f'{name} {surname} {year_of_birthday} {city}, {email}, {phone}'
 
 
 print(get_user_info(name='Ivan', surname='Ivanov', year_of_birthday=1990, city='Ivanteevka',
-                      email='ivanivanov@ivanov.ru', phone='88005553535'))
+                    email='ivanivanov@ivanov.ru', phone='88005553535'))
