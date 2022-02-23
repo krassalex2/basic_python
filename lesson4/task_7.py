@@ -8,13 +8,13 @@
 def fact(n):
     current = 1
 
-    if n == 0 or n == 1:
+    if n == 0:
         yield current
 
-    for r in range(2, n + 1):
+    for r in range(1, n + 1):
         current = r * current
         yield current
 
 
-for el in fact(10):
+for el in fact(0):
     print(el)
