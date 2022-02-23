@@ -10,6 +10,7 @@
 
 from itertools import count, cycle
 
+
 print('Задание 6_1')
 start_number = 3
 for item in count(start_number):
@@ -17,7 +18,8 @@ for item in count(start_number):
     if item == 10:
         break
 
-print('Задания 6_2')
+
+print('Задание 6_2')
 source_list = list('abrakadabra')
 max_iteration_count = 20
 index = 0
