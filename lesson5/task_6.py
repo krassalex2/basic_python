@@ -16,7 +16,7 @@ def getHours(n):
 
 
 result_dict = dict()
-with open("task_6.txt", "r") as f_obj:
+with open("task_6.txt", "r", encoding='utf-8') as f_obj:
     for item in f_obj:
         subject, n1, n2, n3 = item.split()
         result_dict[subject] = getHours(n1) + getHours(n2) + getHours(n3)
