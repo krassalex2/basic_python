@@ -17,19 +17,41 @@ class Warehouse:
     def __init__(self, name, address):
         self.name = name
         self.address = address
+        self.items = dict()
 
     def __str__(self):
         return f'name: {self.name} | address: {self.address}'
 
+    def put(self, item):
+        self.items.setdefault(item.__class__, set())
+        self.items[item.__class__].add(item)
+
+    def get(self, department, equipment_type):
+        item = self.items[equipment_type].pop()
+        item.department = department
+        return item
+
+    def print_store(self):
+        for type_items in self.items.values():
+            for item in type_items:
+                print(item)
+
 
 class OfficeEquipment:
+
+    next_id = 0
+
     def __init__(self, name, brand, weight):
+        self.__class__.next_id += 1
+        self.next_id = self.__class__.next_id
         self.name = name
         self.brand = brand
         self.weight = weight
+        self.department = None
 
     def __str__(self):
-        return f'name: {self.name} | brand: {self.brand} | weight: {self.weight}'
+        return f'id: {self.next_id} | name: {self.name} | brand: {self.brand} ' \
+               f'| weight: {self.weight} | department: {self.department}'
 
 
 class Printer(OfficeEquipment):
@@ -63,11 +85,22 @@ class Xerox(OfficeEquipment):
 warehouse = Warehouse('Северный', 'г. Москва, улица Васи Пупкина')
 printer_1 = Printer('Brother HL-1110R', 'Brother', 5.3, 'laser')
 printer_2 = Printer('Xerox Phaser 3020', 'Xerox', 5, 'laser')
-scanner_1 = Scanner('Xerox Phaser 3020', 'Xerox', 5, 300)
-xerox = Xerox('Xerox Phaser 3020', 'Xerox', weight=10, printing_technology='scanner', dpi=300)
+scanner_1 = Scanner('Scanner Phaser 3020', 'Xerox', 5, 300)
+xerox = Xerox('Xerox Phaser 5000', 'Xerox', weight=10, printing_technology='scanner', dpi=300)
 
-print(warehouse)
-print(printer_1)
-print(printer_2)
-print(scanner_1)
-print(xerox)
+warehouse.put(printer_1)
+warehouse.put(printer_2)
+warehouse.put(scanner_1)
+warehouse.put(xerox)
+warehouse.print_store()
+
+printer = warehouse.get('Production office', Printer)
+scanner = warehouse.get('Production office', Scanner)
+print()
+print(printer)
+print(scanner)
+
+
+
+
+
