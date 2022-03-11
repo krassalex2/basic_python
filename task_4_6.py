@@ -42,6 +42,16 @@ class OfficeEquipment:
     next_id = 0
 
     def __init__(self, name, brand, weight):
+
+        if type(name) != str:
+            raise ValueError('Name is incorrect')
+
+        if type(brand) != str:
+            raise ValueError('Brand is incorrect')
+
+        if type(weight) != float and type(weight) != int:
+            raise ValueError('Weight is incorrect')
+
         self.__class__.next_id += 1
         self.next_id = self.__class__.next_id
         self.name = name
@@ -57,6 +67,10 @@ class OfficeEquipment:
 class Printer(OfficeEquipment):
     def __init__(self, name, brand, weight, printing_technology):
         super().__init__(name, brand, weight)
+
+        if printing_technology != 'laser' and printing_technology != 'jet':
+            raise ValueError('printing_technology is incorrect')
+
         self.printing_technology = printing_technology
 
     def __str__(self):
@@ -66,6 +80,10 @@ class Printer(OfficeEquipment):
 class Scanner(OfficeEquipment):
     def __init__(self, name, brand, weight, dpi):
         super().__init__(name, brand, weight)
+
+        if type(dpi) != int:
+            raise ValueError('dpi is incorrect')
+
         self.dpi = dpi
 
     def __str__(self):
@@ -75,6 +93,13 @@ class Scanner(OfficeEquipment):
 class Xerox(OfficeEquipment):
     def __init__(self, name, brand, weight, printing_technology, dpi):
         super().__init__(name, brand, weight)
+
+        if type(dpi) != int:
+            raise ValueError('dpi is incorrect')
+
+        if printing_technology != 'laser' and printing_technology != 'jet':
+            raise ValueError('printing_technology is incorrect')
+
         self.printing_technology = printing_technology
         self.dpi = dpi
 
@@ -86,7 +111,7 @@ warehouse = Warehouse('Северный', 'г. Москва, улица Васи
 printer_1 = Printer('Brother HL-1110R', 'Brother', 5.3, 'laser')
 printer_2 = Printer('Xerox Phaser 3020', 'Xerox', 5, 'laser')
 scanner_1 = Scanner('Scanner Phaser 3020', 'Xerox', 5, 300)
-xerox = Xerox('Xerox Phaser 5000', 'Xerox', weight=10, printing_technology='scanner', dpi=300)
+xerox = Xerox('Xerox Phaser 5000', 'Xerox', weight=10, printing_technology='laser', dpi=300)
 
 warehouse.put(printer_1)
 warehouse.put(printer_2)
@@ -99,8 +124,3 @@ scanner = warehouse.get('Production office', Scanner)
 print()
 print(printer)
 print(scanner)
-
-
-
-
-
