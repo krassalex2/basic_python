@@ -13,6 +13,9 @@
 # Например, для указания количества принтеров, отправленных на склад, нельзя использовать строковый тип данных.
 
 
+from abc import ABC, abstractmethod
+
+
 class Warehouse:
     def __init__(self, name, address):
         self.name = name
@@ -37,7 +40,7 @@ class Warehouse:
                 print(item)
 
 
-class OfficeEquipment:
+class OfficeEquipment(ABC):
 
     next_id = 0
 
@@ -59,6 +62,7 @@ class OfficeEquipment:
         self.weight = weight
         self.department = None
 
+    @abstractmethod
     def __str__(self):
         return f'id: {self.next_id} | name: {self.name} | brand: {self.brand} ' \
                f'| weight: {self.weight} | department: {self.department}'
